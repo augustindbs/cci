@@ -404,7 +404,7 @@ weights_df_sorted2 = weights_df.sort_values(by = 'Weight', ascending = False)
 
 <br>
 
-On 01/08/2024, the two approaches give the **following weights for an index of 20 coins**: 
+On 01/08/2024, the two approaches give the **following weights for an index consisting of 20 coins**: 
 
 <br>
 
