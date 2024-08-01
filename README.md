@@ -1,8 +1,8 @@
 # Cryptocurrency Index Alternatives
 
-## Rivin and Scevola's [CCI30 index](https://cci30.com)
+## Rivin and Scevola's [CCi30 index](https://cci30.com)
 
-As described in the original [white paper](https://cci30.com/wp-content/uploads/2018/04/CCi30_index_paper.pdf), the CCI30 cryptocurrency index is intended for two main purposes:
+As described in the original [white paper](https://cci30.com/wp-content/uploads/2018/04/CCi30_index_paper.pdf), the CCi30 cryptocurrency index is intended for two main purposes:
 
 1. A barometer to monitor the cryptocurrency market
 2. A passive investment vehicle for invetsors to participate in the growth of the cryptocurrency market
@@ -11,7 +11,7 @@ Rivin and Scevola compute the weights of the index by using a smoothed version o
 
 ## Alternative Approaches
 
-Similar to the CCI30 approach, I pull data from the top cryptocurrencies (not necessarily 20) by market cap excluding stablecoins which are pegged to traditional fiat currencies (e.g. Dai or USDt).
+Similar to the CCi30 approach, I pull data from the top cryptocurrencies (not necessarily 20) by market cap excluding stablecoins which are pegged to traditional fiat currencies (e.g. Dai or USDt).
 
 I recompute the weights using **two different approaches**:
 
