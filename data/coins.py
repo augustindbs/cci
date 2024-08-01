@@ -59,7 +59,7 @@ market_cap_df = pd.DataFrame({
 }).set_index('Symbol')
 
 
-period = 'max'
+period = '1y'
 
 
 coins_data = {}

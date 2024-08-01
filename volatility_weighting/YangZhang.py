@@ -1,7 +1,10 @@
 
 import math
 import numpy as np
-import matplotlib.pyplot as plt
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from data.coins import coins_data
 
@@ -66,5 +69,3 @@ for coin, data in coins_data.items():
 #     fig.tight_layout()
 #     fig.add_gridspec()
 #     plt.show()
-
-                                                                                                                                                                                                                                                         
