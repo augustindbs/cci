@@ -128,11 +128,11 @@ Where:
 Final weight for each coin is computed using the square root of the **inverse near-zero return frequency** multiplied by the **market cap at time $t$**:
 
 $$
-\text{Inverse Near-Zero Return Frequency}_i = \frac{1}{\text{Near Zero Return Frequency}_i(t)}
+\text{Inverse Near-Zero Return Frequency}_i = \frac{1}{\text{Near Zero Return Frequency}_i}
 $$
 
 $$
-\text{Weighted Values}_i = \sqrt{\text{Market Cap}_i(t) \times \text{Inverse Near-Zero Return Frequency}_i}
+\text{W}_i(t) = \sqrt{\text{Market Cap}_i(t) \times \text{Inverse Near-Zero Return Frequency}_i(t)}
 $$
 
 For each coin, the weight at time $t$ is then given by:
