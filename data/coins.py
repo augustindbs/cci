@@ -98,27 +98,3 @@ for coin in coins:
    
     except Exception as e:
         print(f"Error fetching data for {yf_symbol}: {e}. Skipping.")
-
-
-# CHECK FOR NORMALITY IN DAILY RETURNS
-
-
-daily_returns_df = coins_close.pct_change().dropna()
-daily_returns_df = daily_returns_df.replace([np.inf, -np.inf], np.nan).dropna()
-
-fig, axes = plt.subplots(4, 5, figsize = (20, 14))
-axes = axes.flatten()
-
-normality_results = {}
-
-for i, coin in enumerate(daily_returns_df.columns):
-    ax = axes[i]
-    data = daily_returns_df[coin].dropna()
-
-    ax.hist(data, bins = 100, alpha = 0.7, color = 'blue')
-    ax.set_title(coin, fontsize = 10)
-    ax.set_xlabel('Daily Returns')
-    ax.set_ylabel('Frequency')
-
-# plt.tight_layout()
-# plt.show()
