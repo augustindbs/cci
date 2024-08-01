@@ -85,7 +85,7 @@ All credit for the code used to calculate these scores goes to Jason Strimpel's 
 Final weight for each coin $i$ is computed using the square root of the **inverse average mean volatility** multiplied by the **market cap at time $t$**:
 
 $$
-\text{Weighted Value} \quad W_i = \sqrt{\frac{1}{\bar{\sigma}_i} \cdot M_i}
+\text{Weighted Value} \quad W_i = \sqrt{\frac{1}{\bar{\sigma}_i} \cdot M_i(t)}
 $$
 
 For each coin, the weight at time $t$ is then given by:
@@ -128,11 +128,11 @@ Where:
 Final weight for each coin is computed using the square root of the **inverse near-zero return frequency** multiplied by the **market cap at time $t$**:
 
 $$
-\text{Inverse Near-Zero Return Frequency}_i = \frac{1}{\text{Near Zero Return Frequency}_i}
+\text{Inverse Near-Zero Return Frequency}_i = \frac{1}{\text{Near Zero Return Frequency}_i(t)}
 $$
 
 $$
-\text{Weighted Values}_i = \sqrt{\text{Market Cap}_i \times \text{Inverse Near-Zero Return Frequency}_i}
+\text{Weighted Values}_i = \sqrt{\text{Market Cap}_i(t) \times \text{Inverse Near-Zero Return Frequency}_i}
 $$
 
 For each coin, the weight at time $t$ is then given by:
