@@ -380,7 +380,7 @@ weights_df_sorted1 = weights_df.sort_values(by = 'Weight', ascending = False)
 
 <br>
 
-**Near-zero returns weights:**
+**Near-zero returns (NZR) weights:**
 
 ```python
 import pandas as pd
