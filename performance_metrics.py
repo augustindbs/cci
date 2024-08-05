@@ -79,8 +79,9 @@ def value_at_risk(range_returns_df, confidence_interval):
 
     return var
 
-# Calculate the n-day VaR for both portfolios
-confidence_interval = 0.99
+# Example: 5-day VaR for both portfolios with 95% CI
+
+confidence_interval = 0.95
 days = 5
 
 var_volatility = value_at_risk(get_range_returns(portfolio_log_returns_volatility, days), confidence_interval)
