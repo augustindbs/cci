@@ -13,9 +13,6 @@ from tkinter import Tk, Label, Button, Listbox, END, MULTIPLE
 from data.coins import coins_close
 from dotenv import load_dotenv
 
-
-print(coins_close)
-
 load_dotenv()
 
 API_KEY = os.getenv("API_KEY")

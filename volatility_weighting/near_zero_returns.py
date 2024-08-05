@@ -31,3 +31,5 @@ def calculate_near_zero_return_frequency(returns_df, threshold):
     return pd.DataFrame.from_dict(near_zero_return_freq, orient = 'index', columns = ['Near Zero Return Frequency'])
 
 near_zero_returns_df = calculate_near_zero_return_frequency(daily_returns_df, near_zero_threshold)
+
+print(near_zero_returns_df)
