@@ -16,6 +16,9 @@ from consistent_returns.weights import weights_df_sorted2
 daily_returns_df = coins_close.pct_change().dropna()
 daily_returns_df = daily_returns_df.replace([np.inf, -np.inf], np.nan).dropna()
 
+log_returns_df = np.log(coins_close/coins_close.shift(1))
+log_returns_df = log_returns_df.dropna()
+
 fig, axes = plt.subplots(4, 5, figsize = (20, 14))
 axes = axes.flatten()
 
@@ -30,8 +33,8 @@ for i, coin in enumerate(daily_returns_df.columns):
     ax.set_xlabel('Daily Returns')
     ax.set_ylabel('Frequency')
 
-# plt.tight_layout()
-# plt.show()
+plt.tight_layout()
+plt.show()
 
 # COMPUTING PORTFOLIO RETURNS USING WEIGHTS FROM BOTH APPROACHES
 
@@ -58,8 +61,34 @@ def sharpe_ratio(daily_returns, rfr, trading_days):
 sharpe_ratio_volatility = sharpe_ratio(portfolio_daily_returns_volatility, 0.04, 365)
 sharpe_ratio_near_zero = sharpe_ratio(portfolio_daily_returns_near_zero, 0.04, 365)
 
-print(sharpe_ratio_volatility)
-print(sharpe_ratio_near_zero)
+# COMPUTING VaR FOR BOTH PORTFOLIOS
+
+portfolio_log_returns_volatility = (log_returns_df * weights_volatility['Weight']).sum(axis = 1)
+portfolio_log_returns_near_zero = (log_returns_df * weights_near_zero['Weight']).sum(axis = 1)
+
+def get_range_returns(historical_returns, days):
+
+    range_returns = historical_returns.rolling(window = days).sum()
+    range_returns = range_returns.dropna()
+
+    return range_returns
+
+def value_at_risk(range_returns_df, confidence_interval):
+    
+    var = -np.percentile(range_returns_df, 100 - (confidence_interval * 100))
+
+    return var
+
+# Calculate the n-day VaR for both portfolios
+confidence_interval = 0.99
+days = 5
+
+var_volatility = value_at_risk(get_range_returns(portfolio_log_returns_volatility, days), confidence_interval)
+var_near_zero = value_at_risk(get_range_returns(portfolio_log_returns_near_zero, days), confidence_interval)
+
+print(f"{days}-day VaR (Volatility Weighted, {confidence_interval * 100}% CI): {var_volatility * 100:.2f}%")
+print(f"{days}-day VaR (Near Zero Weighted, {confidence_interval * 100}% CI): {var_near_zero * 100:.2f}%")
+
 
 
 
