@@ -20,3 +20,5 @@ weighted_values = np.sqrt(inverse_average_volatility * market_cap_df['Market Cap
 weights = (weighted_values / weighted_values.sum())
 weights_df = pd.DataFrame(weights, columns = ['Weight'])
 weights_df_sorted1 = weights_df.sort_values(by = 'Weight', ascending = False)
+
+print(weights_df_sorted1)
