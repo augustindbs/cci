@@ -16,3 +16,5 @@ weighted_values = np.sqrt(market_cap_df['Market Cap'] * inverse_near_zero['Near 
 weights = (weighted_values / weighted_values.sum())
 weights_df = pd.DataFrame(weights, columns = ['Weight'])
 weights_df_sorted2 = weights_df.sort_values(by = 'Weight', ascending = False)
+
+print(weights_df_sorted2)

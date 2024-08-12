@@ -16,8 +16,8 @@ from consistent_returns.weights import weights_df_sorted2
 daily_returns_df = coins_close.pct_change().dropna()
 daily_returns_df = daily_returns_df.replace([np.inf, -np.inf], np.nan).dropna()
 
-log_returns_df = np.log(coins_close/coins_close.shift(1))
-log_returns_df = log_returns_df.dropna()
+daily_log_returns_df = np.log(coins_close/coins_close.shift(1))
+daily_log_returns_df = daily_log_returns_df.dropna()
 
 fig, axes = plt.subplots(4, 5, figsize = (20, 14))
 axes = axes.flatten()
@@ -63,8 +63,8 @@ sharpe_ratio_near_zero = sharpe_ratio(portfolio_daily_returns_near_zero, 0.04, 3
 
 # COMPUTING VaR FOR BOTH PORTFOLIOS
 
-portfolio_log_returns_volatility = (log_returns_df * weights_volatility['Weight']).sum(axis = 1)
-portfolio_log_returns_near_zero = (log_returns_df * weights_near_zero['Weight']).sum(axis = 1)
+portfolio_daily_log_returns_volatility = (daily_log_returns_df * weights_volatility['Weight']).sum(axis = 1)
+portfolio_daily_log_returns_near_zero = (daily_log_returns_df * weights_near_zero['Weight']).sum(axis = 1)
 
 def get_range_returns(historical_returns, days):
 
@@ -84,12 +84,8 @@ def value_at_risk(range_returns_df, confidence_interval):
 confidence_interval = 0.95
 days = 5
 
-var_volatility = value_at_risk(get_range_returns(portfolio_log_returns_volatility, days), confidence_interval)
-var_near_zero = value_at_risk(get_range_returns(portfolio_log_returns_near_zero, days), confidence_interval)
+var_volatility = value_at_risk(get_range_returns(portfolio_daily_log_returns_volatility, days), confidence_interval)
+var_near_zero = value_at_risk(get_range_returns(portfolio_daily_log_returns_near_zero, days), confidence_interval)
 
-print(f"{days}-day VaR (Volatility Weighted, {confidence_interval * 100}% CI): {var_volatility * 100:.2f}%")
-print(f"{days}-day VaR (Near Zero Weighted, {confidence_interval * 100}% CI): {var_near_zero * 100:.2f}%")
-
-
-
-
+# print(f"{days}-day VaR (Volatility Weighted, {confidence_interval * 100}% CI): {var_volatility * 100:.2f}%")
+# print(f"{days}-day VaR (Near Zero Weighted, {confidence_interval * 100}% CI): {var_near_zero * 100:.2f}%")
