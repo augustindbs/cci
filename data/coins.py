@@ -20,7 +20,7 @@ headers = {
 
 parameters = {
     'start': '1',
-    'limit': '23',
+    'limit': '33',
     'convert': 'USD'
 }
 
